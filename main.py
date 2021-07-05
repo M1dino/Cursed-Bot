@@ -5,6 +5,7 @@ from discord.ext import commands
 # * external data
 import os
 import json
+import random
 from dotenv import load_dotenv
 
 def get_player_data():
@@ -15,6 +16,11 @@ def get_player_data():
 def set_player_data(data):
 	with open('player_data.json', 'w') as f:
 		json.dump(data, f, indent = 4)
+
+def random_element(userData):
+	userData['player_data']['ingame_data']['element'] = random.choice(element_types)
+	return userData
+
 
 CONST = {
 	"player_data": {
@@ -121,9 +127,18 @@ Adventurer:
 Merchant:
 	*More information coming soon...*
 
-Mercenary:
+soldier:
 	*More information coming soon...*
 '''
+element_types = [
+	'earth',
+	'fire',
+	'water',
+	'wind',
+	# 'air',
+	'lightening'
+]
+
 
 bot = commands.Bot(command_prefix='~')
 client = discord.Client()
@@ -141,7 +156,7 @@ async def create(context, *, username):
 	# * testing for duplication
 	if len(data) >= 1:
 		for item in data:
-			if item['player_data']['user_data']['character_name'] == context.author.id:
+			if item['player_data']['user_data']['user_id'] == context.author.id:
 				return await context.send('You can only have one character at a time')
 			if item['player_data']['user_data']['character_name'].lower() == username.lower():
 				return await context.send('Character name is already taken, please choose another name')
@@ -243,18 +258,39 @@ async def _class(context):
 	# ? Checking for input
 	def check(message):
 		return message.author == context.author and message.channel == context.channel and message.content.lower() in (
-			'adventurer', 'merchant', 'mercenary'
+			'adventurer', 'merchant', 'soldier'
 		)
 	message = await bot.wait_for('message', check=check)
 	choice = message.content.lower()
 
 	if choice == 'adventurer':
 		userData['player_data']['ingame_data']['class'] = 'Adventurer'
+		if userData['player_data']['ingame_data']['body_type']:
+			userData['player_data']['user_data']['verified'] = True
+		userData = random_element(userData)
 		data[index-1] = userData
 		set_player_data(data)
 		return await context.send(f"Welcome {userData['player_data']['user_data']['character_name']} Adventurer! Please type ***~guild*** so that you could join a guild and be on your way to a new adventure")
+	elif choice == 'merchant':
+		userData['player_data']['ingame_data']['class'] = 'Merchant'
+		if userData['player_data']['ingame_data']['body_type']:
+			userData['player_data']['user_data']['verified'] = True
+		userData = random_element(userData)
+		data[index-1] = userData
+		set_player_data(data)
+		return await context.send(f"Welcome {userData['player_data']['user_data']['character_name']} fellow merchant! Please type ***~guild*** so that you could join a guild and be on your way to a new adventure")
+	elif choice == 'soldier':
+		userData['player_data']['ingame_data']['class'] = 'Soldier'
+		if userData['player_data']['ingame_data']['body_type']:
+			userData['player_data']['user_data']['verified'] = True
+		userData = random_element(userData)
+		data[index-1] = userData
+		set_player_data(data)
+		return await context.send(f"Welcome {userData['player_data']['user_data']['character_name']} Soldier! Please type ***~household*** so that you could get to work right away")
 
 # userData['player_data']['ingame_data']['body_type'] 
 # ? running the bot
 load_dotenv()
 bot.run(os.environ['TOKEN'])
+
+# 'https://1.bp.blogspot.com/-p607ODk78HE/YMIXml1syHI/AAAAAAAAIlg/wjY20j4PqmEbsdO9uXGSl07AGbIwldeggCPcBGAsYHg/w919-h516-p-k-no-nu/devil-girl-horn-digital-art-fantasy-1-4k-uhdpaper.com-472.0_a-thumbnail.jpg'
