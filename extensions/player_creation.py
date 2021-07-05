@@ -150,18 +150,13 @@ soldier:
 
 
 class PlayerCreation(commands.Cog):
-    def __init__(self, client):
-        self.client = client
+    def __init__(self, bot):
+        self.bot = bot
     
     # * Events
     @commands.Cog.listener()
     async def on_ready(self):
         print('Player creator is online')
-
-    # * Commands
-    @commands.command()
-    async def ping(self, context):
-        await context.send('Pong!')
     
     # * Creating the character
     @commands.command(aliases=['c', 'Create', 'CREATE', 'GIMME'])
@@ -190,7 +185,7 @@ class PlayerCreation(commands.Cog):
             return message.author == context.author and message.channel == context.channel and message.content.lower() in (
                 'male', 'guy', 'dude', 'boy', 'boi', 'bro', 'brother', 'female', 'gurl', 'girl', 'dudeette', 'sister', 'sis', 'thot'
             )
-        message = await self.client.wait_for('message', check=check)
+        message = await self.bot.wait_for('message', check=check)
         choice = message.content.lower()
 
         # ! testing the gender and appending the data
@@ -230,7 +225,7 @@ class PlayerCreation(commands.Cog):
             return message.author == context.author and message.channel == context.channel and message.content.lower() in (
                 'ectomorph', 'mesomorph', 'endomorph'
             )
-        message = await self.client.wait_for('message', check=check)
+        message = await self.bot.wait_for('message', check=check)
         choice = message.content.lower()
         
         # ? making decision based on user input
@@ -287,7 +282,7 @@ class PlayerCreation(commands.Cog):
             return message.author == context.author and message.channel == context.channel and message.content.lower() in (
                 'adventurer', 'merchant', 'soldier'
             )
-        message = await self.client.wait_for('message', check=check)
+        message = await self.bot.wait_for('message', check=check)
         choice = message.content.lower()
 
         if choice == 'adventurer':
@@ -319,5 +314,5 @@ class PlayerCreation(commands.Cog):
 
 
 
-def setup(client):
-    client.add_cog(PlayerCreation(client))
+def setup(bot):
+    bot.add_cog(PlayerCreation(bot))

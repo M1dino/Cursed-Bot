@@ -1,53 +1,104 @@
 [
-    {
-        "player_data": {
-            "user_data": {
-                "user_id": 774310307043737674,
-                "character_name": "Elutheus de Lune",
-                "gender": "male",
-                "friends": [],
-                "marriage": {},
-                "verified": true
-            },
-            "ingame_data": {
-                "class": "Adventurer",
-                "level": 0,
-                "sub_class": {},
-                "body_type": "Mesomorph",
-                "element": "lightening",
-                "element_efficiency": "F",
-                "special_element": {},
-                "spirit": {},
-                "inventory": [],
-                "money": {
-                    "copper": 0,
-                    "silver": 0,
-                    "gold": 0
-                },
-                "equipment": {
-                    "weapon": {
-                        "right_hand": null,
-                        "left_hand": null
-                    },
-                    "armour": {
-                        "left_arm": null,
-                        "right_arm": null,
-                        "body": null,
-                        "head": null,
-                        "legs": null,
-                        "feet": null
-                    }
-                },
-                "status": {
-                    "attack_power": 10,
-                    "defence_power": 10,
-                    "speed": 10,
-                    "health": 100,
-                    "fatigue": 0,
-                    "energy": 100,
-                    "luck": 10
-                }
-            }
+  {
+    "player_data": {
+      "user_data": {
+        "user_id": 77431030704373767,
+        "character_name": "Elutheus de Lune",
+        "gender": "male",
+        "friends": [],
+        "marriage": {},
+        "verified": true
+      },
+      "ingame_data": {
+        "class": "Adventurer",
+        "level": 0,
+        "sub_class": {},
+        "body_type": "Mesomorph",
+        "element": "lightening",
+        "element_efficiency": "F",
+        "special_element": {},
+        "spirit": {},
+        "inventory": [],
+        "money": {
+          "copper": 0,
+          "silver": 0,
+          "gold": 0
+        },
+        "equipment": {
+          "weapon": {
+            "right_hand": null,
+            "left_hand": null
+          },
+          "armour": {
+            "left_arm": null,
+            "right_arm": null,
+            "body": null,
+            "head": null,
+            "legs": null,
+            "feet": null
+          }
+        },
+        "status": {
+          "attack_power": 10,
+          "defence_power": 10,
+          "speed": 10,
+          "health": 100,
+          "fatigue": 0,
+          "energy": 100,
+          "luck": 10
         }
+      }
     }
+  },
+  {
+    "player_data": {
+      "user_data": {
+        "user_id": 774310307043737674,
+        "character_name": "a",
+        "gender": "female",
+        "friends": [],
+        "marriage": {},
+        "verified": false
+      },
+      "ingame_data": {
+        "class": null,
+        "level": 0,
+        "sub_class": {},
+        "body_type": null,
+        "element": null,
+        "element_efficiency": "F",
+        "special_element": {},
+        "spirit": {},
+        "inventory": [],
+        "money": {
+          "copper": 0,
+          "silver": 0,
+          "gold": 0
+        },
+        "equipment": {
+          "weapon": {
+            "right_hand": null,
+            "left_hand": null
+          },
+          "armour": {
+            "left_arm": null,
+            "right_arm": null,
+            "body": null,
+            "head": null,
+            "legs": null,
+            "feet": null
+          }
+        },
+        "status": {
+          "attack_power": 0,
+          "defence_power": 0,
+          "speed": 0,
+          "health": 100,
+          "fatigue": 0,
+          "energy": 100,
+          "luck": 0
+        }
+      }
+    }
+  }
 ]
